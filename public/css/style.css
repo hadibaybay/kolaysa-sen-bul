@@ -1,0 +1,221 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(14,165,196,.28), transparent 42%),
+    radial-gradient(circle at 88% 25%, rgba(30,95,217,.28), transparent 48%),
+    linear-gradient(160deg, #071726 0%, #0a1f33 55%, #051119 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+h1 { text-align: center; margin-bottom: 24px; letter-spacing: .3px; }
+h2 { margin-top: 0; }
+
+.card, .panel {
+  background: rgba(10, 28, 44, 0.75);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.45);
+  margin-bottom: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.hidden { display: none !important; }
+
+label { display: block; font-size: 13px; color: #8fc6d9; margin: 12px 0 4px; }
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 15px;
+}
+input[type="text"]::placeholder { color: #5c8a9c; }
+input[type="text"]:focus { outline: none; border-color: #17b6d4; box-shadow: 0 0 0 3px rgba(23,182,212,.25); }
+
+.row { display: flex; gap: 10px; margin-top: 14px; }
+
+button {
+  flex: 1;
+  padding: 13px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .1s ease, opacity .15s ease;
+}
+button:active { transform: scale(.97); }
+button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+button.primary {
+  background: linear-gradient(120deg, #0ea5c4, #1e5fd9);
+  color: #fff;
+}
+button.big { width: 100%; padding: 18px; font-size: 18px; margin: 16px 0; }
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.category-chip {
+  flex: none;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.05);
+  color: #a9d6e5;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.category-chip.selected {
+  background: linear-gradient(120deg, #0ea5c4, #1e5fd9);
+  color: #fff;
+  border-color: transparent;
+}
+
+.divider { text-align: center; color: #5c8a9c; margin: 16px 0 4px; font-size: 13px; }
+
+.error { color: #ff8a7a; min-height: 20px; margin-top: 10px; }
+.hint { color: #8fc6d9; font-size: 13px; text-align: center; }
+
+.player-list, .result-list { list-style: none; padding: 0; margin: 14px 0; }
+.player-list li, .result-list li {
+  padding: 10px 12px; background: rgba(255,255,255,.05); border-radius: 8px; margin-bottom: 6px;
+}
+
+.btn-link {
+  display: block; text-align: center; text-decoration: none;
+  padding: 12px; border-radius: 10px;
+  background: linear-gradient(120deg, #0ea5c4, #1e5fd9);
+  color: #fff; font-weight: 700;
+}
+
+/* ---- Oyun ekranı ---- */
+
+.header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+
+.pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.pill-icon { font-size: 14px; }
+
+.progress-track {
+  display: flex;
+  gap: 4px;
+  height: 6px;
+  margin-bottom: 10px;
+}
+.progress-track .seg {
+  flex: 1;
+  border-radius: 3px;
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+}
+.progress-track .seg .fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0ea5c4, #1e5fd9);
+  border-radius: 3px;
+  transition: width .2s ease;
+}
+
+.meta-row {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: #8fc6d9; margin-bottom: 20px;
+}
+
+.player-wrap {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+  margin: 10px 0 20px;
+  height: 90px;
+}
+
+.play-btn {
+  flex: none;
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(120deg, #0ea5c4, #1e5fd9);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(23,182,212,.5);
+}
+.play-btn svg { margin-left: 3px; }
+.play-btn.playing { animation: pulse 1s ease-out infinite; }
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(23,182,212,.5); }
+  70%  { box-shadow: 0 0 0 16px rgba(23,182,212,0); }
+  100% { box-shadow: 0 0 0 0 rgba(23,182,212,0); }
+}
+
+.wave { display: flex; align-items: center; gap: 3px; width: 90px; height: 24px; }
+.wave span {
+  display: block; width: 3px; border-radius: 2px;
+  background: rgba(255,255,255,.25);
+}
+.wave-left { justify-content: flex-end; }
+.wave-right { justify-content: flex-start; }
+
+.attempt-history { list-style: none; padding: 0; margin: 0 0 16px; }
+.attempt-history li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px; margin-bottom: 6px;
+  font-size: 14px; color: #8fc6d9;
+  background: rgba(255,255,255,.04);
+}
+.attempt-history li.current {
+  background: rgba(23,182,212,.15);
+  border: 1px solid rgba(23,182,212,.35);
+  color: #fff;
+}
+.attempt-history li.wrong { color: #ff8a7a; }
+.attempt-history li.correct { color: #4ee69f; }
+.attempt-history li.passed { color: #5c8a9c; font-style: italic; }
+.attempt-history .mark { flex: none; width: 18px; text-align: center; }
+
+.guess-area { position: relative; margin-top: 4px; }
+
+.suggestions {
+  position: absolute; bottom: 52px; left: 0; right: 0; z-index: 10;
+  background: #0d2438; border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px; overflow: hidden;
+  max-height: 260px; overflow-y: auto;
+  list-style: none; margin: 0; padding: 0;
+}
+.suggestions li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; cursor: pointer; font-size: 14px;
+}
+.suggestions li:hover { background: rgba(255,255,255,.06); }
+.suggestions img { width: 32px; height: 32px; border-radius: 4px; }
+
+.pass-btn { background: rgba(255,255,255,.06); }
+
+.cover { width: 140px; height: 140px; border-radius: 10px; display: block; margin: 0 auto 12px; object-fit: cover; }
+.track-name { text-align: center; font-weight: 700; margin-bottom: 16px; }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolaysa Sen Bul — Oyun</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container game-screen">
+
+  <div id="gamePanel" class="panel">
+    <div class="header-row">
+      <div class="pill">
+        <span class="pill-icon">🎯</span>
+        <span id="categoryLabel">-</span>
+      </div>
+      <div class="pill" id="roundCounter">-/-</div>
+    </div>
+
+    <div class="progress-track" id="progressTrack"></div>
+
+    <div class="meta-row">
+      <span id="durationLabel">-s açık</span>
+      <span id="attemptLabel">-. tahmin / 6</span>
+    </div>
+
+    <div class="player-wrap">
+      <div class="wave wave-left" id="waveLeft"></div>
+      <button id="playBtn" class="play-btn" aria-label="Kesiti çal">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="wave wave-right" id="waveRight"></div>
+    </div>
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <ul id="attemptHistory" class="attempt-history"></ul>
+
+    <div class="guess-area">
+      <input id="guessInput" type="text" placeholder="Şarkı ya da sanatçı ara..." autocomplete="off">
+      <ul id="suggestions" class="suggestions hidden"></ul>
+      <div class="row">
+        <button id="passBtn" class="pass-btn">Pas Geç <span id="passBonus"></span></button>
+        <button id="guessBtn" class="primary">Tahmin Et</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="roundResult" class="panel hidden">
+    <h2>🎵 Şarkı Açıklandı</h2>
+    <img id="resultCover" class="cover" src="" alt="">
+    <p id="resultTrack" class="track-name"></p>
+    <ul id="resultList" class="result-list"></ul>
+    <p class="hint" id="nextHint">Sıradaki round başlıyor...</p>
+  </div>
+
+  <div id="gameOverCard" class="panel hidden">
+    <h2>🏆 Oyun Bitti</h2>
+    <ul id="finalScores" class="result-list"></ul>
+    <a href="index.html" class="primary btn-link">Yeni Oyun</a>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/autocomplete.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

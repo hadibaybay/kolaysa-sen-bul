@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolaysa Sen Bul</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container lobby-screen">
+  <h1>🎧 Kolaysa Sen Bul</h1>
+
+  <div id="setupCard" class="card">
+    <label>Adın</label>
+    <input id="playerName" type="text" placeholder="Adını yaz" maxlength="20">
+
+    <label>Kategori</label>
+    <div id="categoryGrid" class="category-grid"></div>
+
+    <div class="row">
+      <button id="soloBtn" class="primary">Tek Başına Oyna</button>
+    </div>
+
+    <div class="row">
+      <button id="createBtn">Arkadaşlarla Oda Kur</button>
+    </div>
+
+    <div class="divider">veya</div>
+
+    <label>Oda Kodu</label>
+    <input id="roomCode" type="text" placeholder="Örn: AB3X9" maxlength="6" style="text-transform:uppercase">
+    <div class="row">
+      <button id="joinBtn">Odaya Katıl</button>
+    </div>
+
+    <p id="errorMsg" class="error"></p>
+  </div>
+
+  <div id="roomCard" class="card hidden">
+    <h2>Oda: <span id="roomCodeDisplay"></span></h2>
+    <p class="hint">Bu kodu arkadaşlarınla paylaş.</p>
+    <p class="hint" id="categoryDisplay"></p>
+    <ul id="playerList" class="player-list"></ul>
+    <button id="startBtn" class="primary hidden">Oyunu Başlat</button>
+    <p id="waitHint" class="hint">Host'un oyunu başlatması bekleniyor...</p>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/lobby.js"></script>
+</body>
+</html>

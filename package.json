@@ -1,0 +1,14 @@
+{
+  "name": "muzik-tahmin-oyunu",
+  "version": "1.0.0",
+  "description": "Kolaysa Sen Bul - coklu oyunculu muzik tahmin oyunu",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}
